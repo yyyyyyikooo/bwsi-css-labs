@@ -59,7 +59,7 @@ def operation_sanitize_input(oper: str) -> str:
     """
     while True:
         if input(oper) in ["add", "subtract", "multiply", "divide"]:
-            return this
+            return input(oper)
         print("Invalid input. Please input a valid number.")
         
 

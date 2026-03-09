@@ -36,15 +36,42 @@ def simple_calculator(operation: str, num1: float, num2: float) -> float:
             raise ValueError("Cannot divide by zero.")
     else:
         raise ValueError("Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'.")
+    
+def request_sanitize_input(prompt: str) -> float:
+    """
+        Function that sanitizes user number input for the operation
+
+        Returns:
+            float: the sanitized user number input
+    """
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input. Please input a valid number.")
+
+def operation_sanitize_input(oper: str) -> str:
+    """
+        Function sanitize user input for operation
+
+        Returns:
+            str: the sanitized operation user input
+    """
+    while True:
+        if input(oper) in ["add", "subtract", "multiply", "divide"]:
+            return input(oper)
+        print("Invalid input. Please input a valid number.")
+        
+
 
 def main():
     
     print(f"===== Simple Calculator =====")
 
     # Ask the user for sample input    
-    num1 = float(input("Enter the first number: "))
-    num2 = float(input("Enter the second number: "))
-    operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
+    num1 = request_sanitize_input("Enter the first number: ")
+    num2 = request_sanitize_input("Enter the second number: ")
+    operation = operation_sanitize_input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
 
     # Perform the calculation and display the result
     result = simple_calculator(operation, num1, num2)
